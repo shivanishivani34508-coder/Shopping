@@ -1,19 +1,28 @@
-{% extends "base.html" %}
-
-{% block head_title %}Welcome | Fashion HUB{% endblock head_title %}
-
-{% block extra_head %}
+{% extends "base.html" %} {% load static %} {% block head_title %}Welcome |
+Fashion HUB{% endblock head_title %} {% block extra_head %}
 <link rel="preconnect" href="https://fonts.googleapis.com" />
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Manrope:wght@400;500;700&display=swap" rel="stylesheet" />
+<link
+  href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Manrope:wght@400;500;700&display=swap"
+  rel="stylesheet"
+/>
 <style>
   .welcome-page {
     --ink: #202124;
     --berry: #b22f67;
     --teal: #1f6f78;
-    background: radial-gradient(circle at 10% 20%, rgba(246, 176, 68, 0.25), transparent 35%),
-                radial-gradient(circle at 90% 10%, rgba(178, 47, 103, 0.25), transparent 32%),
-                linear-gradient(130deg, #fffdf8 0%, #f9f7ff 45%, #f4ffff 100%);
+    background:
+      radial-gradient(
+        circle at 10% 20%,
+        rgba(246, 176, 68, 0.25),
+        transparent 35%
+      ),
+      radial-gradient(
+        circle at 90% 10%,
+        rgba(178, 47, 103, 0.25),
+        transparent 32%
+      ),
+      linear-gradient(130deg, #fffdf8 0%, #f9f7ff 45%, #f4ffff 100%);
     min-height: calc(100vh - 90px);
     font-family: "Manrope", "Segoe UI", sans-serif;
     color: var(--ink);
@@ -96,17 +105,21 @@
   }
 
   .welcome-showcase {
+    position: relative;
     border-radius: 18px;
     overflow: hidden;
     box-shadow: 0 14px 30px rgba(24, 31, 44, 0.16);
     max-width: 100%;
+    min-height: clamp(320px, 42vw, 520px);
+    background: linear-gradient(180deg, #f8f0f3, #ffffff);
   }
 
   .welcome-showcase img {
     width: 100%;
-    height: auto;
+    height: 100%;
     display: block;
     object-fit: cover;
+    object-position: center top;
   }
 
   .btn-pill {
@@ -172,14 +185,16 @@
       grid-template-columns: 1fr;
     }
 
+    .welcome-showcase {
+      min-height: 340px;
+    }
+
     .feature-grid {
       grid-template-columns: 1fr;
     }
   }
 </style>
-{% endblock extra_head %}
-
-{% block content %}
+{% endblock extra_head %} {% block content %}
 <section class="welcome-page">
   <div class="container">
     <div class="hero-shell">
@@ -189,22 +204,36 @@
             <p class="welcome-kicker mb-0">new season, bold edits</p>
             <h1 class="welcome-title">Welcome to Fashion HUB</h1>
             <p class="welcome-copy mb-0">
-              Fresh drops, everyday essentials, and statement pieces in one curated store.
-              Build your look with styles for women, men, and kids.
+              Fresh drops, everyday essentials, and statement pieces in one
+              curated store. Build your look with styles for women, men, and
+              kids.
             </p>
 
             <div class="cta-row">
-              <a class="btn btn-primary btn-pill" href="{% url 'core:home' %}">Explore Collection</a>
+              <a class="btn btn-primary btn-pill" href="{% url 'core:home' %}"
+                >Explore Collection</a
+              >
               {% if request.user.is_authenticated %}
-              <a class="btn btn-outline-dark btn-pill" href="{% url 'core:account' %}">Go to Account</a>
+              <a
+                class="btn btn-outline-dark btn-pill"
+                href="{% url 'core:account' %}"
+                >Go to Account</a
+              >
               {% else %}
-              <a class="btn btn-outline-dark btn-pill" href="{% url 'account_signup' %}">Create Account</a>
+              <a
+                class="btn btn-outline-dark btn-pill"
+                href="{% url 'account_signup' %}"
+                >Create Account</a
+              >
               {% endif %}
             </div>
           </div>
 
           <div class="welcome-showcase">
-            <img src="/media/shoping.avif" alt="Shopping fashion collection" />
+            <img
+              src="https://i.pinimg.com/736x/b1/e4/e5/b1e4e5e623867c25f0afd1fb1ddd507e.jpg"
+              alt="Shopping fashion collection"
+            />
           </div>
         </div>
 

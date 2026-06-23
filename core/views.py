@@ -456,7 +456,7 @@ class HomeView(ListView):
     def get_queryset(self):
         category = self.request.GET.get('category')
         search = (self.request.GET.get('search') or '').strip()
-        queryset = Item.objects.all().order_by('-id')
+        queryset = Item.objects.all().order_by('?')
 
         if category:
             queryset = queryset.filter(category=category)
